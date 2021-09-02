@@ -1,26 +1,23 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class BulletController : MonoBehaviour
 {
-    private Rigidbody rigidBody;
-
-    [SerializeField]
-    private float bulletSpeed;
-
-    private void Awake()
+    private void OnTriggerEnter(Collider collision)
     {
-        rigidBody = GetComponent<Rigidbody>();
-    }
-
-    void Update()
-    {
-        rigidBody.velocity = transform.forward * bulletSpeed;
-    }
-
-    private void OnBecameInvisible()
-    {
-        Destroy(gameObject);
+        WeaponController weaponController = GetComponentInParent<WeaponController>();
+        EnemyController enemy = collision.gameObject.GetComponent<EnemyController>();
+        PlayerController player = collision.gameObject.GetComponent<PlayerController>();
+        if (weaponController != null)
+        {
+            if (enemy != null)
+            {
+                enemy.TakeDamage(weaponController.damage);
+            }
+            else if (player != null)
+            {
+                player.TakeDamage(weaponController.damage);
+            }
+            Destroy(gameObject);
+        }
     }
 }

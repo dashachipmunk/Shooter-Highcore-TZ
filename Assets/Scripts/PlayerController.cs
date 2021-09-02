@@ -1,4 +1,4 @@
-using Lean.Pool;
+
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -35,7 +35,7 @@ public class PlayerController : MonoBehaviour
 
     [Header("Events")]
     [SerializeField]
-    private UnityEvent<int> playerIsShot;
+    private UnityEvent shooting;
 
     private void Awake()
     {
@@ -69,29 +69,16 @@ public class PlayerController : MonoBehaviour
 
     private void Shooting()
     {
-        if (timer > 0)
+        
+        if (Input.GetButton("Fire1"))
         {
-            timer -= Time.deltaTime;
-        }
-        if (Input.GetButton("Fire1") && timer <= 0)
-        {
-            LeanPool.Spawn(shot, shotPosition.position, transform.rotation);
-            timer = shootingFrequency;
+            shooting.Invoke();
         }
     }
 
-    private void ReduceHealth(int damage)
+    public void TakeDamage(int damage)
     {
         healthBarSlider.value -= damage;
         health = healthBarSlider.value;
-    }
-
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.gameObject.CompareTag("EnemyShot"))
-        {
-            ReduceHealth(2);
-            Destroy(other.gameObject);
-        }
     }
 }

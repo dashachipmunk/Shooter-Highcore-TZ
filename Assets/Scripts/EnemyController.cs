@@ -1,7 +1,8 @@
-using Lean.Pool;
+
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class EnemyController : MonoBehaviour
 {
@@ -14,7 +15,7 @@ public class EnemyController : MonoBehaviour
 
     [Header("Health Properties")]
     [SerializeField]
-    private int health;
+    private float health;
 
     [Header("Shooting Properties")]
     [SerializeField]
@@ -23,6 +24,10 @@ public class EnemyController : MonoBehaviour
     private Transform shotPosition;
     [SerializeField]
     private float shootingFrequency;
+
+    [Header("Events")]
+    [SerializeField]
+    private UnityEvent shooting;
 
     private void Awake()
     {
@@ -37,25 +42,13 @@ public class EnemyController : MonoBehaviour
 
     private void Shooting()
     {
-        if (timer > 0)
-        {
-            timer -= Time.deltaTime;
-        }
-        else
-        {
-            LeanPool.Spawn(shot, shotPosition.position, transform.rotation);
-            timer = shootingFrequency;
-        }
+        shooting.Invoke();
     }
 
-    private void OnTriggerEnter(Collider other)
+    public void TakeDamage(float damage)
     {
-        if (other.gameObject.CompareTag("PlayerShot"))
-        {
-            health--;
-            Destroy(other.gameObject);
-            EnemyDies();
-        }
+        health -= damage;
+        EnemyDies();
     }
 
     private void EnemyDies()
