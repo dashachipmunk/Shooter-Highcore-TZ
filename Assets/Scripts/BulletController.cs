@@ -7,7 +7,7 @@ public class BulletController : MonoBehaviour
     private Rigidbody rigidBody;
 
     [SerializeField]
-    private float bulletSeed;
+    private float bulletSpeed;
 
     private void Awake()
     {
@@ -16,7 +16,7 @@ public class BulletController : MonoBehaviour
 
     void Update()
     {
-        rigidBody.velocity = transform.forward * bulletSeed;
+        rigidBody.velocity = transform.forward * bulletSpeed;
     }
 
     private void OnBecameInvisible()

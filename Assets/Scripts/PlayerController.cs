@@ -2,6 +2,8 @@ using Lean.Pool;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
+using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
 {
@@ -10,6 +12,8 @@ public class PlayerController : MonoBehaviour
     [Header("References")]
     [SerializeField]
     private CharacterController characterController;
+    [SerializeField]
+    private Slider healthBarSlider;
 
     [Header("Moving Properties")]
     [SerializeField]
@@ -17,7 +21,11 @@ public class PlayerController : MonoBehaviour
     [SerializeField]
     private float rotationSpeed;
 
-    [Header("Shooting properties")]
+    [Header("Health Properties")]
+    [SerializeField]
+    private float health;
+
+    [Header("Shooting Properties")]
     [SerializeField]
     private GameObject shot;
     [SerializeField]
@@ -25,19 +33,23 @@ public class PlayerController : MonoBehaviour
     [SerializeField]
     private float shootingFrequency;
 
-    private void Start()
+    [Header("Events")]
+    [SerializeField]
+    private UnityEvent<int> playerIsShot;
+
+    private void Awake()
     {
-        
+        healthBarSlider.maxValue = health;
     }
 
     private void Update()
     {
-        Move();
-        Rotate();
-        Shoot();
+        Moving();
+        Rotating();
+        Shooting();
     }
 
-    private void Move()
+    private void Moving()
     {
         float inputHorizontal = Input.GetAxis("Horizontal");
         float inputVertical = Input.GetAxis("Vertical");
@@ -49,13 +61,13 @@ public class PlayerController : MonoBehaviour
         characterController.Move(moveDirection * movementSpeed * Time.deltaTime);
     }
 
-    private void Rotate()
+    private void Rotating()
     {
         float mouseHorizontal = Input.GetAxis("Mouse X");
         transform.Rotate(Vector3.up, mouseHorizontal * rotationSpeed * Time.deltaTime);
     }
 
-    private void Shoot()
+    private void Shooting()
     {
         if (timer > 0)
         {
@@ -65,6 +77,21 @@ public class PlayerController : MonoBehaviour
         {
             LeanPool.Spawn(shot, shotPosition.position, transform.rotation);
             timer = shootingFrequency;
+        }
+    }
+
+    private void ReduceHealth(int damage)
+    {
+        healthBarSlider.value -= damage;
+        health = healthBarSlider.value;
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.CompareTag("EnemyShot"))
+        {
+            ReduceHealth(2);
+            Destroy(other.gameObject);
         }
     }
 }
