@@ -1,14 +1,9 @@
-
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
 {
-    private float timer;
-
     [Header("References")]
     [SerializeField]
     private CharacterController characterController;
@@ -24,14 +19,6 @@ public class PlayerController : MonoBehaviour
     [Header("Health Properties")]
     [SerializeField]
     private float health;
-
-    [Header("Shooting Properties")]
-    [SerializeField]
-    private GameObject shot;
-    [SerializeField]
-    private Transform shotPosition;
-    [SerializeField]
-    private float shootingFrequency;
 
     [Header("Events")]
     [SerializeField]
@@ -55,9 +42,7 @@ public class PlayerController : MonoBehaviour
         float inputVertical = Input.GetAxis("Vertical");
         Vector3 moveDirection = transform.forward * inputVertical + transform.right * inputHorizontal;
         if (moveDirection.magnitude > 1)
-        {
             moveDirection.Normalize();
-        }
         characterController.Move(moveDirection * movementSpeed * Time.deltaTime);
     }
 
@@ -69,11 +54,8 @@ public class PlayerController : MonoBehaviour
 
     private void Shooting()
     {
-        
         if (Input.GetButton("Fire1"))
-        {
             shooting.Invoke();
-        }
     }
 
     public void TakeDamage(int damage)
