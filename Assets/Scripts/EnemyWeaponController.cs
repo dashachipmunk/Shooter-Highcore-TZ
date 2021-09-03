@@ -6,15 +6,17 @@ public class EnemyWeaponController : MonoBehaviour
 {
     private float timer;
     private int weaponIndex;
-    public int damage;
+    private int damage;
 
     [Header("References")]
+    [SerializeField]
+    private GameObject[] weapons;
     [SerializeField]
     private GameObject bulletPrefab;
     [SerializeField]
     private Transform shotPosition;
-    [SerializeField]
-    private GameObject[] weapons;
+
+    public int Damage { get => damage; set => damage = value; }
 
     private void Awake()
     {
@@ -51,9 +53,7 @@ public class EnemyWeaponController : MonoBehaviour
         Instantiate(weapons[index], transform);
         WeaponManager weaponManager = weapons[index].GetComponent<WeaponManager>();
         if (weaponManager != null)
-        {
             damage = weaponManager.damage;
-        }
         if (transform.childCount > 2)
             Destroy(transform.GetChild(1).gameObject);
     }

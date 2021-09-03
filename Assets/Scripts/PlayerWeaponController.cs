@@ -6,19 +6,23 @@ public class PlayerWeaponController : MonoBehaviour
 {
     private float timer;
     private int weaponIndex;
-    public int damage;
+    private int damage;
 
     [Header("References")]
+    [SerializeField]
+    private GameObject[] weapons;
     [SerializeField]
     private GameObject bulletPrefab;
     [SerializeField]
     private Transform shotPosition;
-    [SerializeField]
-    private GameObject[] weapons;
+
+    [Header("Canvas References")]
     [SerializeField]
     private Image weaponImage;
     [SerializeField]
     private Text bulletsNumberText;
+
+    public int Damage { get => damage; set => damage = value; }
 
     private void Awake()
     {

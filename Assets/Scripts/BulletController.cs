@@ -12,7 +12,7 @@ public class BulletController : MonoBehaviour
         {
             if (enemy != null)
             {
-                enemy.TakeDamage(playerWeaponController.damage);
+                enemy.TakeDamage(playerWeaponController.Damage);
                 Destroy(gameObject);
             }
         }
@@ -20,7 +20,7 @@ public class BulletController : MonoBehaviour
         {
             if (player != null)
             {
-                player.TakeDamage(enemyWeaponController.damage);
+                player.TakeDamage(enemyWeaponController.Damage);
                 Destroy(gameObject);
             }
         }

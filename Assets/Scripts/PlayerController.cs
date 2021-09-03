@@ -1,5 +1,7 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
@@ -27,6 +29,7 @@ public class PlayerController : MonoBehaviour
     private void Awake()
     {
         healthBarSlider.maxValue = health;
+        healthBarSlider.value = healthBarSlider.maxValue;
     }
 
     private void Update()
@@ -62,5 +65,18 @@ public class PlayerController : MonoBehaviour
     {
         healthBarSlider.value -= damage;
         health = healthBarSlider.value;
+        PlayerDies();
+    }
+
+    private void PlayerDies()
+    {
+        if (health <= 0)
+            StartCoroutine(RestartLevel());
+    }
+
+    private IEnumerator RestartLevel()
+    {
+        yield return new WaitForSeconds(2);
+        SceneManager.LoadScene(0);
     }
 }

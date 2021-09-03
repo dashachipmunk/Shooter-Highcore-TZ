@@ -268,13 +268,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3905b917f1ab10041806e01d40f0a06a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 0
-  bulletPrefab: {fileID: 4767606630617808941, guid: 9605b28e8d47e1d4497250abf6a408ab, type: 3}
-  shotPosition: {fileID: 1655643805}
   weapons:
   - {fileID: 6020666897733053110, guid: f91e46af649acba4597314487e6e60e8, type: 3}
   - {fileID: 6789618526684407811, guid: 48eafe24e9e5c0e48999e02e0de0f039, type: 3}
   - {fileID: 401880842311759781, guid: 2721f28c3bdc78c4e99c024f1f4aec7a, type: 3}
+  bulletPrefab: {fileID: 4767606630617808941, guid: 9605b28e8d47e1d4497250abf6a408ab, type: 3}
+  shotPosition: {fileID: 1655643805}
 --- !u!1 &205677182
 GameObject:
   m_ObjectHideFlags: 0
@@ -304,7 +303,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 205677182}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 16.64, y: 1, z: -47.31}
+  m_LocalPosition: {x: 16.64, y: 1, z: -42.79}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1141611466}
@@ -329,8 +328,8 @@ MonoBehaviour:
   shooting:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: WeaponController, Assembly-CSharp
+      - m_Target: {fileID: 1141611467}
+        m_TargetAssemblyTypeName: EnemyWeaponController, Assembly-CSharp
         m_MethodName: OnShoot
         m_Mode: 1
         m_Arguments:
@@ -474,8 +473,8 @@ MonoBehaviour:
   shooting:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: WeaponController, Assembly-CSharp
+      - m_Target: {fileID: 2098085864}
+        m_TargetAssemblyTypeName: EnemyWeaponController, Assembly-CSharp
         m_MethodName: OnShoot
         m_Mode: 1
         m_Arguments:
@@ -919,7 +918,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 794638784}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1, z: -37.53}
+  m_LocalPosition: {x: 0, y: 1, z: -27.68}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 107427034}
@@ -1072,7 +1071,7 @@ MonoBehaviour:
   healthBarSlider: {fileID: 234511457}
   movementSpeed: 20
   rotationSpeed: 100
-  health: 10
+  health: 100
   shooting:
     m_PersistentCalls:
       m_Calls:
@@ -1484,13 +1483,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3905b917f1ab10041806e01d40f0a06a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 0
-  bulletPrefab: {fileID: 4767606630617808941, guid: 9605b28e8d47e1d4497250abf6a408ab, type: 3}
-  shotPosition: {fileID: 738086299}
   weapons:
   - {fileID: 6020666897733053110, guid: f91e46af649acba4597314487e6e60e8, type: 3}
   - {fileID: 6789618526684407811, guid: 48eafe24e9e5c0e48999e02e0de0f039, type: 3}
   - {fileID: 401880842311759781, guid: 2721f28c3bdc78c4e99c024f1f4aec7a, type: 3}
+  bulletPrefab: {fileID: 4767606630617808941, guid: 9605b28e8d47e1d4497250abf6a408ab, type: 3}
+  shotPosition: {fileID: 738086299}
 --- !u!1 &1043766346
 GameObject:
   m_ObjectHideFlags: 0
@@ -1685,13 +1683,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3905b917f1ab10041806e01d40f0a06a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 0
-  bulletPrefab: {fileID: 4767606630617808941, guid: 9605b28e8d47e1d4497250abf6a408ab, type: 3}
-  shotPosition: {fileID: 1170087188}
   weapons:
   - {fileID: 6020666897733053110, guid: f91e46af649acba4597314487e6e60e8, type: 3}
   - {fileID: 6789618526684407811, guid: 48eafe24e9e5c0e48999e02e0de0f039, type: 3}
   - {fileID: 401880842311759781, guid: 2721f28c3bdc78c4e99c024f1f4aec7a, type: 3}
+  bulletPrefab: {fileID: 4767606630617808941, guid: 9605b28e8d47e1d4497250abf6a408ab, type: 3}
+  shotPosition: {fileID: 1170087188}
 --- !u!1 &1170087187
 GameObject:
   m_ObjectHideFlags: 0
@@ -1866,13 +1863,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7dabe1a661099eb41a953d63fed3ff3b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 0
-  bulletPrefab: {fileID: 4767606630617808941, guid: 9605b28e8d47e1d4497250abf6a408ab, type: 3}
-  shotPosition: {fileID: 1665072184}
   weapons:
   - {fileID: 6020666897733053110, guid: f91e46af649acba4597314487e6e60e8, type: 3}
   - {fileID: 6789618526684407811, guid: 48eafe24e9e5c0e48999e02e0de0f039, type: 3}
   - {fileID: 401880842311759781, guid: 2721f28c3bdc78c4e99c024f1f4aec7a, type: 3}
+  bulletPrefab: {fileID: 4767606630617808941, guid: 9605b28e8d47e1d4497250abf6a408ab, type: 3}
+  shotPosition: {fileID: 1665072184}
   weaponImage: {fileID: 291498589}
   bulletsNumberText: {fileID: 1914269581}
 --- !u!1 &1547139886
@@ -1970,7 +1966,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1590583398}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -14.66, y: 1, z: -30.03}
+  m_LocalPosition: {x: -16.9, y: 1, z: -19.52}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1031829534}
@@ -1995,8 +1991,8 @@ MonoBehaviour:
   shooting:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: WeaponController, Assembly-CSharp
+      - m_Target: {fileID: 1031829535}
+        m_TargetAssemblyTypeName: EnemyWeaponController, Assembly-CSharp
         m_MethodName: OnShoot
         m_Mode: 1
         m_Arguments:
@@ -2211,7 +2207,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1667820944}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 13.13, y: 1, z: -27.02}
+  m_LocalPosition: {x: 13.13, y: 1, z: -14.77}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1881988319}
@@ -2236,8 +2232,8 @@ MonoBehaviour:
   shooting:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: WeaponController, Assembly-CSharp
+      - m_Target: {fileID: 1881988320}
+        m_TargetAssemblyTypeName: EnemyWeaponController, Assembly-CSharp
         m_MethodName: OnShoot
         m_Mode: 1
         m_Arguments:
@@ -2401,13 +2397,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3905b917f1ab10041806e01d40f0a06a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 0
-  bulletPrefab: {fileID: 4767606630617808941, guid: 9605b28e8d47e1d4497250abf6a408ab, type: 3}
-  shotPosition: {fileID: 1307756546}
   weapons:
   - {fileID: 6020666897733053110, guid: f91e46af649acba4597314487e6e60e8, type: 3}
   - {fileID: 6789618526684407811, guid: 48eafe24e9e5c0e48999e02e0de0f039, type: 3}
   - {fileID: 401880842311759781, guid: 2721f28c3bdc78c4e99c024f1f4aec7a, type: 3}
+  bulletPrefab: {fileID: 4767606630617808941, guid: 9605b28e8d47e1d4497250abf6a408ab, type: 3}
+  shotPosition: {fileID: 1307756546}
 --- !u!1 &1914269579
 GameObject:
   m_ObjectHideFlags: 0
@@ -2531,10 +2526,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3905b917f1ab10041806e01d40f0a06a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 0
-  bulletPrefab: {fileID: 4767606630617808941, guid: 9605b28e8d47e1d4497250abf6a408ab, type: 3}
-  shotPosition: {fileID: 1834582981}
   weapons:
   - {fileID: 6020666897733053110, guid: f91e46af649acba4597314487e6e60e8, type: 3}
   - {fileID: 6789618526684407811, guid: 48eafe24e9e5c0e48999e02e0de0f039, type: 3}
   - {fileID: 401880842311759781, guid: 2721f28c3bdc78c4e99c024f1f4aec7a, type: 3}
+  bulletPrefab: {fileID: 4767606630617808941, guid: 9605b28e8d47e1d4497250abf6a408ab, type: 3}
+  shotPosition: {fileID: 1834582981}
