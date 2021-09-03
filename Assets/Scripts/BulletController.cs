@@ -4,20 +4,25 @@ public class BulletController : MonoBehaviour
 {
     private void OnTriggerEnter(Collider collision)
     {
-        WeaponController weaponController = GetComponentInParent<WeaponController>();
+        PlayerWeaponController playerWeaponController = GetComponentInParent<PlayerWeaponController>();
+        EnemyWeaponController enemyWeaponController = GetComponentInParent<EnemyWeaponController>();
         EnemyController enemy = collision.gameObject.GetComponent<EnemyController>();
         PlayerController player = collision.gameObject.GetComponent<PlayerController>();
-        if (weaponController != null)
+        if (playerWeaponController != null)
         {
             if (enemy != null)
             {
-                enemy.TakeDamage(weaponController.damage);
+                enemy.TakeDamage(playerWeaponController.damage);
+                Destroy(gameObject);
             }
-            else if (player != null)
+        }
+        else if (enemyWeaponController != null)
+        {
+            if (player != null)
             {
-                player.TakeDamage(weaponController.damage);
+                player.TakeDamage(enemyWeaponController.damage);
+                Destroy(gameObject);
             }
-            Destroy(gameObject);
         }
     }
 }

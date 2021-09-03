@@ -1,17 +1,13 @@
-
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
 public class EnemyController : MonoBehaviour
 {
-    private Rigidbody rigidBody;
     private float timer;
 
     [Header("References")]
     [SerializeField]
-    private GameObject player;
+    private Transform player;
 
     [Header("Health Properties")]
     [SerializeField]
@@ -19,30 +15,25 @@ public class EnemyController : MonoBehaviour
 
     [Header("Shooting Properties")]
     [SerializeField]
-    private GameObject shot;
-    [SerializeField]
-    private Transform shotPosition;
-    [SerializeField]
-    private float shootingFrequency;
+    private float shootingRate;
 
     [Header("Events")]
     [SerializeField]
     private UnityEvent shooting;
 
-    private void Awake()
-    {
-        rigidBody = GetComponent<Rigidbody>();
-    }
-
     void Update()
     {
         Shooting();
-        transform.LookAt(player.transform.position);
+        transform.LookAt(player.position);
     }
 
     private void Shooting()
     {
-        shooting.Invoke();
+        if (Time.time >= timer)
+        {
+            timer = Time.time + 1f / shootingRate;
+            shooting.Invoke();
+        }
     }
 
     public void TakeDamage(float damage)
